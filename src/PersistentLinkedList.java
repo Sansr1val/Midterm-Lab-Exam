@@ -51,6 +51,10 @@ public class PersistentLinkedList {
 		deletedNodePosition.add(position);
 	}
 	
+	/*
+	 * Locates the node to be changed using the position input of the user.
+	 * Adds the new data into the PersistentNode's data history to update its data.
+	 */
 	public void changeValue(int position, int data) {
 		PersistentNode currentNode = head;
 		for(int i = 0; i<position;i++) {
