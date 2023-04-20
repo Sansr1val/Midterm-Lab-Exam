@@ -42,13 +42,28 @@ public class PersistentLinkedList {
 	 */
 	public void delete(int position) {
 		PersistentNode nodeToDelete = head;
-		for(int i = 0; i<position; i++) {
-			nodeToDelete = nodeToDelete.getNext();
+		if(position == 1) {
+			deletedNodeArray.add(head);
+			deletedNodePosition.add(position);
+			head = head.getNext();
+			head.setPrevious(null);
+			size--;
+		}else if(position == size) {
+			deletedNodeArray.add(tail);
+			deletedNodePosition.add(position);
+			tail = tail.getPrevious();
+			tail.setNext(null);
+			size--;
+		}else {
+			for(int i = 1; i<position; i++) {
+				nodeToDelete = nodeToDelete.getNext();
+			}
+			nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
+			nodeToDelete.getNext().setPrevious(nodeToDelete.getPrevious());
+			deletedNodeArray.add(nodeToDelete);
+			deletedNodePosition.add(position);
+			size--;
 		}
-		nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
-		nodeToDelete.getNext().setPrevious(nodeToDelete.getPrevious());
-		deletedNodeArray.add(nodeToDelete);
-		deletedNodePosition.add(position);
 	}
 	
 	/*
