@@ -19,6 +19,7 @@ public class PersistentLinkedList {
 		return size;
 	}
 	
+	//Adds a new node at the end of the list, the size increase after each addition.
 	public void add(int data) {
 		PersistentNode node = new PersistentNode(data);
 		if(head == null || tail == null) {
@@ -33,8 +34,21 @@ public class PersistentLinkedList {
 		}
 	}
 	
+	/*
+	 * Deletes a node depending on the position input of the user.
+	 * Utilizes the size class filed to determine the node position.
+	 * If found, disconnects the node and saves it to an array together with its position.
+	 * Reduces the size after deletion.
+	 */
 	public void delete(int position) {
-		
+		PersistentNode nodeToDelete = head;
+		for(int i = 0; i<size; i++) {
+			nodeToDelete = nodeToDelete.getNext();
+		}
+		nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
+		nodeToDelete.getNext().setPrevious(nodeToDelete.getPrevious());
+		deletedNodeArray.add(nodeToDelete);
+		deletedNodePosition.add(position);
 	}
 	
 	public String display() {
