@@ -120,16 +120,16 @@ public class PersistentLinkedList {
 			currentNode = currentNode.getNext();
 		}
 		str += "Current value of node "+position+" is "+currentNode.getData()+"\nPrevious values of node "+position
-				+" are "+currentNode.displayDataHistory();
+				+" are/is "+currentNode.displayDataHistory();
 		return str;
 	}
 	//Displays the current existing node values and the deleted nodes' values together with its past position.
 	public String displayListHistory() {
 		String str = "";
-		str += "Current existing nodes values: \n"+display()+"\n Deleted nodes most recent values: \n";
-		for(int i = 0; i<size; i++) {
+		str += "Current existing nodes values: \n"+display()+"\n\nDeleted nodes most recent values: \n";
+		for(int i = 0; i<deletedNodeArray.getSize(); i++) {
 			if(deletedNodeArray.get(i) != null) {
-				str+= "Deleted node's position: "+deletedNodePosition.get(i)+"\nDeleted node's value: "+deletedNodeArray.get(i).getData()+"\n\n";
+				str+= "Deleted node's last position: "+deletedNodePosition.get(i)+"\nDeleted node's value: "+deletedNodeArray.get(i).getData()+"\n\n";
 			}
 		}
 		return str;
