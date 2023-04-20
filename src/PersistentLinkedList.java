@@ -52,7 +52,16 @@ public class PersistentLinkedList {
 	}
 	
 	public String display() {
-		return "";
+		String str =  "";
+		PersistentNode currentNode = head;
+		while(currentNode.getNext()!= null) {
+			str+=currentNode.getData()+", ";
+			currentNode = currentNode.getNext();
+		}
+		if(str != "") {
+			str = str.substring(0,str.length()-2);
+		}
+		return str;
 	}
 	public String displayNodeHistory(int position) {
 		return "";
