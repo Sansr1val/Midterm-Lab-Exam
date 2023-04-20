@@ -6,9 +6,6 @@ public class Stack {
 	public Stack() {
 		head = null;
 	}
-	public Stack(int data) {
-		head = new Node(data);
-	}
 	
 	public void setHead(Node head) {
 		this.head = head;
