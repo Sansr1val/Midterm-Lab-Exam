@@ -15,6 +15,10 @@ public class PersistentLinkedList {
 		size = 0;
 	}
 	
+	public int getSize() {
+		return size;
+	}
+	
 	public void add(int data) {
 		PersistentNode node = new PersistentNode(data);
 		if(head == null || tail == null) {
