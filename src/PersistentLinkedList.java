@@ -72,10 +72,16 @@ public class PersistentLinkedList {
 	 */
 	public void changeValue(int position, int data) {
 		PersistentNode currentNode = head;
-		for(int i = 0; i<position;i++) {
-			currentNode = currentNode.getNext();
+		if(position == 1) {
+			head.addData(data);
+		}else if (position == size) {
+			tail.addData(data);
+		}else {
+			for(int i = 1; i<position;i++) {
+				currentNode = currentNode.getNext();
+			}
+			currentNode.addData(data);
 		}
-		currentNode.addData(data);
 	}
 	
 	//Returns data based from node position
