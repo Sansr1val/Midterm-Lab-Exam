@@ -5,12 +5,14 @@ public class PersistentLinkedList {
 	private PersistentNode tail;
 	private IntegerArray deletedNodePosition;
 	private PersistentNodeArray deletedNodeArray;
+	private int size;
 	
 	public PersistentLinkedList() {
 		head = null;
 		tail = null;
 		deletedNodePosition = new IntegerArray();
 		deletedNodeArray = new PersistentNodeArray();
+		size = 0;
 	}
 	
 	public void add(int data) {
@@ -18,10 +20,12 @@ public class PersistentLinkedList {
 		if(head == null || tail == null) {
 			head = node;
 			tail = node;
+			size ++;
 		}else {
 			tail.setNext(node);
 			node.setPrevious(tail);
 			tail = node;
+			size ++;
 		}
 	}
 	
