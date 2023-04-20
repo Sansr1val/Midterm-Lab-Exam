@@ -41,4 +41,8 @@ public class PersistentNode {
 	public int getData() {
 		return dataHistory.getHead().getData();
 	}
+	
+	public String displayDataHistory() {
+		return dataHistory.display();
+	}
 }
