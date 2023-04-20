@@ -42,7 +42,7 @@ public class PersistentLinkedList {
 	 */
 	public void delete(int position) {
 		PersistentNode nodeToDelete = head;
-		for(int i = 0; i<position-1; i++) {
+		for(int i = 0; i<position; i++) {
 			nodeToDelete = nodeToDelete.getNext();
 		}
 		nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
