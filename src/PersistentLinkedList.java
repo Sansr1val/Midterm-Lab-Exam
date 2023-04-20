@@ -74,7 +74,14 @@ public class PersistentLinkedList {
 		return str;
 	}
 	public String displayListHistory() {
-		return "";
+		String str = "";
+		str += "Current existing nodes values: \n"+display()+"\n Deleted nodes most recent values: \n";
+		for(int i = 0; i<size; i++) {
+			if(deletedNodeArray.get(i) != null) {
+				str+= "Deleted node's position: "+deletedNodePosition.get(i)+"\nDeleted node's value: "+deletedNodeArray.get(i).getData()+"\n\n";
+			}
+		}
+		return str;
 	}
 	
 	
