@@ -40,6 +40,7 @@ public class Main {
 				break;
 				
 			case 6:
+				listHistory();
 				break;
 				
 			case 7:
@@ -86,6 +87,11 @@ public class Main {
 		System.out.print("Enter node position: ");
 		int position = Integer.parseInt(reader.readLine());
 		System.out.println(list.displayNodeHistory(position));
+	}
+	
+	public static void listHistory() {
+		System.out.println("Showing List History ...");
+		System.out.println(list.displayListHistory());
 	}
 
 }
