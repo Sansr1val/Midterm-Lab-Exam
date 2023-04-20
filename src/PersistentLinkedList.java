@@ -116,7 +116,7 @@ public class PersistentLinkedList {
 	public String displayNodeHistory(int position) {
 		String str = "";
 		PersistentNode currentNode = head;
-		for(int i = 0; i<position-1;i++) {
+		for(int i = 1; i<position;i++) {
 			currentNode = currentNode.getNext();
 		}
 		str += "Current value of node "+position+" is "+currentNode.getData()+"\nPrevious values of node "+position
