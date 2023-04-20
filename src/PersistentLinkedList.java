@@ -51,6 +51,14 @@ public class PersistentLinkedList {
 		deletedNodePosition.add(position);
 	}
 	
+	public void changeValue(int position, int data) {
+		PersistentNode currentNode = head;
+		for(int i = 0; i<position;i++) {
+			currentNode = currentNode.getNext();
+		}
+		currentNode.addData(data);
+	}
+	
 	//Displays the list from head to tail;
 	public String display() {
 		String str =  "";
