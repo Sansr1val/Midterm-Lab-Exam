@@ -51,6 +51,7 @@ public class PersistentLinkedList {
 		deletedNodePosition.add(position);
 	}
 	
+	//Displays the list from head to tail;
 	public String display() {
 		String str =  "";
 		PersistentNode currentNode = head;
@@ -63,6 +64,7 @@ public class PersistentLinkedList {
 		}
 		return str;
 	}
+	//Displays current and past values of a given node.
 	public String displayNodeHistory(int position) {
 		String str = "";
 		PersistentNode currentNode = head;
@@ -73,6 +75,7 @@ public class PersistentLinkedList {
 				+" are "+currentNode.displayDataHistory();
 		return str;
 	}
+	//Displays the current existing node values and the deleted nodes' values together with its past position.
 	public String displayListHistory() {
 		String str = "";
 		str += "Current existing nodes values: \n"+display()+"\n Deleted nodes most recent values: \n";
