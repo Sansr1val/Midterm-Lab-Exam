@@ -36,6 +36,7 @@ public class Main {
 				break;
 				
 			case 5:
+				nodeHistory();
 				break;
 				
 			case 6:
@@ -79,6 +80,12 @@ public class Main {
 		list.changeValue(position, value);
 		System.out.println("Node value hase been modified successfully!");
 		
+	}
+	
+	public static void nodeHistory() throws NumberFormatException, IOException {
+		System.out.print("Enter node position: ");
+		int position = Integer.parseInt(reader.readLine());
+		System.out.println(list.displayNodeHistory(position));
 	}
 
 }
