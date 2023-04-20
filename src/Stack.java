@@ -28,13 +28,17 @@ public class Stack {
 	public String display() {
 		Node currentNode = head;
 		String str = "";
-		while(currentNode.getNext().getNext() != null) {
-			str += currentNode.getData()+", ";
-			currentNode = currentNode.getNext();
+		if(head.getNext() == null) {
+			return str+=head.getData();
+		}else {
+			while(currentNode != null) {
+				str += currentNode.getData()+", ";
+				currentNode = currentNode.getNext();
+			}
+			if(str!="") {
+				str = str.substring(0,str.length()-5)+" and "+ str.substring(str.length()-4,str.length()-2)+".";
+			}
+			return str;
 		}
-		if(str!="") {
-			str = str.substring(0,str.length()-2)+" and "+currentNode.getNext().getData();
-		}
-		return str;
 	}
 }
