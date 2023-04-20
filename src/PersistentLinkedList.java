@@ -78,6 +78,21 @@ public class PersistentLinkedList {
 		currentNode.addData(data);
 	}
 	
+	//Returns data based from node position
+	public int get(int position) {
+		if(position == 1) {
+			return head.getData();
+		}else if (position == size) {
+			return tail.getData();
+		}else {
+			PersistentNode currentNode = head;
+			for(int i = 1; i <position; i++) {
+				currentNode = currentNode.getNext();
+			}
+			return currentNode.getData();
+		}
+	}
+	
 	//Displays the list from head to tail;
 	public String display() {
 		String str =  "";
