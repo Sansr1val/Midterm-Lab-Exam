@@ -21,7 +21,4 @@ public class PersistentNode {
 	public int getData() {
 		return dataHistory.getHead().getData();
 	}
-	
-	
-
 }
