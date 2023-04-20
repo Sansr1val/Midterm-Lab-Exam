@@ -41,28 +41,35 @@ public class PersistentLinkedList {
 	 * Reduces the size after deletion.
 	 */
 	public void delete(int position) {
-		PersistentNode nodeToDelete = head;
-		if(position == 1) {
+		if(position == 1 && head == tail) {
 			deletedNodeArray.add(head);
 			deletedNodePosition.add(position);
-			head = head.getNext();
-			head.setPrevious(null);
-			size--;
-		}else if(position == size) {
-			deletedNodeArray.add(tail);
-			deletedNodePosition.add(position);
-			tail = tail.getPrevious();
-			tail.setNext(null);
-			size--;
+			head = null;
+			tail = null;
 		}else {
-			for(int i = 1; i<position; i++) {
-				nodeToDelete = nodeToDelete.getNext();
+			if(position == 1) {
+				deletedNodeArray.add(head);
+				deletedNodePosition.add(position);
+				head = head.getNext();
+				head.setPrevious(null);
+				size--;
+			}else if(position == size) {
+				deletedNodeArray.add(tail);
+				deletedNodePosition.add(position);
+				tail = tail.getPrevious();
+				tail.setNext(null);
+				size--;
+			}else {
+				PersistentNode nodeToDelete = head;
+				for(int i = 1; i<position; i++) {
+					nodeToDelete = nodeToDelete.getNext();
+				}
+				nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
+				nodeToDelete.getNext().setPrevious(nodeToDelete.getPrevious());
+				deletedNodeArray.add(nodeToDelete);
+				deletedNodePosition.add(position);
+				size--;
 			}
-			nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
-			nodeToDelete.getNext().setPrevious(nodeToDelete.getPrevious());
-			deletedNodeArray.add(nodeToDelete);
-			deletedNodePosition.add(position);
-			size--;
 		}
 	}
 	
