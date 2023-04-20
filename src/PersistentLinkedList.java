@@ -42,7 +42,7 @@ public class PersistentLinkedList {
 	 */
 	public void delete(int position) {
 		PersistentNode nodeToDelete = head;
-		for(int i = 0; i<size; i++) {
+		for(int i = 0; i<position-1; i++) {
 			nodeToDelete = nodeToDelete.getNext();
 		}
 		nodeToDelete.getPrevious().setNext(nodeToDelete.getNext());
@@ -64,7 +64,14 @@ public class PersistentLinkedList {
 		return str;
 	}
 	public String displayNodeHistory(int position) {
-		return "";
+		String str = "";
+		PersistentNode currentNode = head;
+		for(int i = 0; i<position-1;i++) {
+			currentNode = currentNode.getNext();
+		}
+		str += "Current value of node "+position+" is "+currentNode.getData()+"\nPrevious values of node "+position
+				+" are "+currentNode.displayDataHistory();
+		return str;
 	}
 	public String displayListHistory() {
 		return "";
