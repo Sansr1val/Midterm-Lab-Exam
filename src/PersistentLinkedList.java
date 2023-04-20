@@ -67,7 +67,7 @@ public class PersistentLinkedList {
 	public String display() {
 		String str =  "";
 		PersistentNode currentNode = head;
-		while(currentNode.getNext()!= null) {
+		while(currentNode != null) {
 			str+=currentNode.getData()+", ";
 			currentNode = currentNode.getNext();
 		}
