@@ -5,6 +5,7 @@ public class PersistentLinkedList {
 	private PersistentNode tail;
 	private IntegerArray deletedNodePosition;
 	private PersistentNodeArray deletedNodeArray;
+	private LinkedList history;
 	private int size;
 	
 	public PersistentLinkedList() {
@@ -12,11 +13,18 @@ public class PersistentLinkedList {
 		tail = null;
 		deletedNodePosition = new IntegerArray();
 		deletedNodeArray = new PersistentNodeArray();
+		history = new LinkedList();
 		size = 0;
 	}
 	
 	public int getSize() {
 		return size;
+	}
+	public LinkedList getHistory() {
+		return history;
+	}
+	public PersistentNode getHead() {
+		return head;
 	}
 	
 	//Adds a new node at the end of the list, the size increase after each addition.
@@ -26,11 +34,13 @@ public class PersistentLinkedList {
 			head = node;
 			tail = node;
 			size ++;
+//			history.add(copyList());
 		}else {
 			tail.setNext(node);
 			node.setPrevious(tail);
 			tail = node;
 			size ++;
+//			history.add(copyList());
 		}
 	}
 	
@@ -46,6 +56,7 @@ public class PersistentLinkedList {
 			deletedNodePosition.add(position);
 			head = null;
 			tail = null;
+//			history.add(copyList());
 		}else {
 			if(position == 1) {
 				deletedNodeArray.add(head);
@@ -53,12 +64,14 @@ public class PersistentLinkedList {
 				head = head.getNext();
 				head.setPrevious(null);
 				size--;
+//				history.add(copyList());
 			}else if(position == size) {
 				deletedNodeArray.add(tail);
 				deletedNodePosition.add(position);
 				tail = tail.getPrevious();
 				tail.setNext(null);
 				size--;
+//				history.add(copyList());
 			}else {
 				PersistentNode nodeToDelete = head;
 				for(int i = 1; i<position; i++) {
@@ -69,6 +82,7 @@ public class PersistentLinkedList {
 				deletedNodeArray.add(nodeToDelete);
 				deletedNodePosition.add(position);
 				size--;
+//				history.add(copyList());
 			}
 		}
 	}
@@ -133,15 +147,31 @@ public class PersistentLinkedList {
 	//Displays the current existing node values and the deleted nodes' values together with its past position.
 	public String displayListHistory() {
 		String str = "";
-		str += "Current existing nodes values: \n"+display()+"\n\nDeleted nodes most recent values: \n";
-		for(int i = 0; i<deletedNodeArray.getSize(); i++) {
-			if(deletedNodeArray.get(i) != null) {
-				str+= "Deleted node's last position: "+deletedNodePosition.get(i)+"\nDeleted node's value: "+deletedNodeArray.get(i).getData()+"\n\n";
+		if(head == null) {
+			str += "Current existing nodes values: \nThe list is empty"+"\n\nDeleted nodes most recent values: \n";
+		}else {
+			str += "Current existing nodes values: \n"+display()+"\n\nDeleted nodes most recent values: \n";
+		}
+		if(deletedNodeArray.getSize() == 0) {
+			str+= "There are no deleted nodes yet.\n";
+		}else {
+			for(int i = 0; i<deletedNodeArray.getSize(); i++) {
+				if(deletedNodeArray.get(i) != null) {
+					str+= "Deleted node's last position: "+deletedNodePosition.get(i)+"\nDeleted node's value: "+deletedNodeArray.get(i).getData()+"\n\n";
+				}
 			}
 		}
+		str += history.display();
 		return str;
 	}
 	
-	
-
+	public PersistentLinkedList copyList() {
+		PersistentLinkedList newList = new PersistentLinkedList();
+		PersistentNode currentNode = head;
+		while(currentNode != null) {
+			newList.add(currentNode.getData());
+			currentNode = currentNode.getNext();
+		}
+		return newList;
+	}
 }
