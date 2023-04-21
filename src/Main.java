@@ -127,7 +127,7 @@ public class Main {
 	/*
 	 * Only allows integers as inputs
 	 * Changes the value of a number depending on the position input and new value input.
-	 * Saves a version of the list after chaning a value of a node in the list.
+	 * Saves a version of the list after changing a value of a node in the list.
 	 */
 	public static void changeValue() throws NumberFormatException, IOException {
 		try {

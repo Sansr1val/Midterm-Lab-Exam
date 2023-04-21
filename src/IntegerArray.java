@@ -18,7 +18,7 @@ public class IntegerArray {
 		return capacity;
 	}
 
-	//Adds a new data in the array, the size is doubled when the arra is full
+	//Adds a new data in the array, the size is doubled when the array is full
 	public void add(int data) {
 		if(size == capacity) {
 			increaseCapacity();
