@@ -70,6 +70,11 @@ public class Main {
 
 	}
 
+	/*
+	 * Only allows integers as inputs.
+	 * Adds a new node at the end of the list.
+	 * A history version is made by copying the linked list after insertion.
+	 */
 	public static void addNode() throws NumberFormatException, IOException {
 		try {
 			System.out.print("Enter new node's value: ");
@@ -82,6 +87,12 @@ public class Main {
 		}
 	}
 
+	/*
+	 * Only allows integers as inputs.
+	 * Deletes a node based on the position input.
+	 * A copy of the list is saved after deletion.
+	 * The deleted node is also saved(to be used for list history).
+	 */
 	public static void deleteNode() throws NumberFormatException, IOException {
 		try {
 			if(list.getHead() == null) {
@@ -102,6 +113,8 @@ public class Main {
 			System.out.println("Only allowed inputs are integers. Please try again.");
 		}
 	}
+	//Displays the data of the currently existing nodes of the list,
+	//Shows a prompt if the list is currently empty.
 	public static void display() {
 		if(list.getHead() == null){
 			System.out.println("The list is empty");
@@ -111,6 +124,11 @@ public class Main {
 		}
 	}
 
+	/*
+	 * Only allows integers as inputs
+	 * Changes the value of a number depending on the position input and new value input.
+	 * Saves a version of the list after chaning a value of a node in the list.
+	 */
 	public static void changeValue() throws NumberFormatException, IOException {
 		try {
 			if(list.getHead() == null) {
@@ -135,6 +153,8 @@ public class Main {
 
 	}
 
+	//Displays the history of a node.
+	//Shows its current value and its past values
 	public static void nodeHistory() throws NumberFormatException, IOException {
 		try {
 			if(list.getHead() == null) {
@@ -149,6 +169,13 @@ public class Main {
 		}
 	}
 
+	/*
+	 * Shows the history of the list.
+	 * Does 3 things:
+	 * -Displays the current values of the existing node.
+	 * -Displays the deleted nodes recent values together with its past position.
+	 * -Displays all the versions of the list.
+	 */
 	public static void listHistory() {
 		System.out.println("Showing List History ...");
 		System.out.println(list.displayListHistory());
