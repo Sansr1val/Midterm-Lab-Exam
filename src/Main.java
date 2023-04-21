@@ -7,6 +7,11 @@ public class Main {
 	static PersistentLinkedList list = new PersistentLinkedList();
 	public static void main(String[] args) throws NumberFormatException, IOException {
 
+		/*
+		 * The main menu of the program.
+		 * When an error occurs while inputting a command or while
+		 * performing the operations, the user will be brought back to the main menu.
+		 */
 		while(true) {
 			try {
 				System.out.println("\n\n-----Menu-----");
@@ -45,6 +50,13 @@ public class Main {
 					break;
 
 				case 7:
+					System.out.print("\n--Exit--" + "\nProgram will be terminated");
+					for (int i = 0; i < 3; i++) {
+						Thread.sleep(1000);
+						System.out.print(".");
+					}
+					System.out.print("\nProgram terminated.");
+					System.exit(0);
 					break;
 
 				default:
