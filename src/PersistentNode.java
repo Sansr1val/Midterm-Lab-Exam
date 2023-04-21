@@ -1,4 +1,4 @@
-
+//Node used by the PersistentLinkedList class
 public class PersistentNode {
 	private Stack dataHistory;
 	private PersistentNode next;
@@ -10,13 +10,14 @@ public class PersistentNode {
 		next = null;
 		previous = null;
 	}
-	//Parameterized constructor
+	//Parameterized constructor, adds the input data to the Node's data history
 	public PersistentNode(int data) {
 		dataHistory = new Stack();
 		dataHistory.push(data);
 		next = null;
 		previous = null;
 	}
+	//setters and getters
 	public void setNext(PersistentNode next) {
 		this.next = next;
 	}
@@ -42,6 +43,7 @@ public class PersistentNode {
 		return dataHistory.getHead().getData();
 	}
 	
+	//Displays the values in the history stack
 	public String displayDataHistory() {
 		return dataHistory.display();
 	}

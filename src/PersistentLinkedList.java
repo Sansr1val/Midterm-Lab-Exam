@@ -8,6 +8,7 @@ public class PersistentLinkedList {
 	private LinkedList history;
 	private int size;
 	
+	//Constructor
 	public PersistentLinkedList() {
 		head = null;
 		tail = null;
@@ -17,6 +18,7 @@ public class PersistentLinkedList {
 		size = 0;
 	}
 	
+	//getters
 	public int getSize() {
 		return size;
 	}
@@ -34,13 +36,11 @@ public class PersistentLinkedList {
 			head = node;
 			tail = node;
 			size ++;
-//			history.add(copyList());
 		}else {
 			tail.setNext(node);
 			node.setPrevious(tail);
 			tail = node;
 			size ++;
-//			history.add(copyList());
 		}
 	}
 	
@@ -56,7 +56,6 @@ public class PersistentLinkedList {
 			deletedNodePosition.add(position);
 			head = null;
 			tail = null;
-//			history.add(copyList());
 		}else {
 			if(position == 1) {
 				deletedNodeArray.add(head);
@@ -64,14 +63,12 @@ public class PersistentLinkedList {
 				head = head.getNext();
 				head.setPrevious(null);
 				size--;
-//				history.add(copyList());
 			}else if(position == size) {
 				deletedNodeArray.add(tail);
 				deletedNodePosition.add(position);
 				tail = tail.getPrevious();
 				tail.setNext(null);
 				size--;
-//				history.add(copyList());
 			}else {
 				PersistentNode nodeToDelete = head;
 				for(int i = 1; i<position; i++) {
@@ -82,7 +79,6 @@ public class PersistentLinkedList {
 				deletedNodeArray.add(nodeToDelete);
 				deletedNodePosition.add(position);
 				size--;
-//				history.add(copyList());
 			}
 		}
 	}
@@ -165,6 +161,7 @@ public class PersistentLinkedList {
 		return str;
 	}
 	
+	//Returns a copy of the Persistent Linked List
 	public PersistentLinkedList copyList() {
 		PersistentLinkedList newList = new PersistentLinkedList();
 		PersistentNode currentNode = head;

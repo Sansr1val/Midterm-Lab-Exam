@@ -1,4 +1,4 @@
-
+//Node class used by the Stack data structure to store the data history of PersistentNodes
 public class Node {
 	
 	private int data;

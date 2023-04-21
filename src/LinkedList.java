@@ -1,4 +1,4 @@
-
+//Data structure used to store the history of the PersistentLinkedList's versions
 public class LinkedList {
 	private ListNode head;
 	private ListNode tail;
@@ -8,6 +8,7 @@ public class LinkedList {
 		tail = null;
 	}
 	
+	//adds a new data in the list
 	public void add(PersistentLinkedList data) {
 		ListNode node = new ListNode(data);
 		if(head == null || tail == null) {
@@ -20,6 +21,7 @@ public class LinkedList {
 		}
 	}
 	
+	//displays the data(versions) of the linkedlist(PersistentLinkedList's history)
 	public String display() {
 		String str =  "Versions of the linked list:\n";
 		int counter = 1;

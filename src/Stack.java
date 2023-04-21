@@ -1,4 +1,5 @@
 
+//Data structure used to store the values of the PersistentNode class
 public class Stack {
 	private Node head;
 	
