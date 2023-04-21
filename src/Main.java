@@ -23,58 +23,71 @@ public class Main {
 				case 1:
 					addNode();
 					break;
-					
+
 				case 2:
 					deleteNode();
 					break;
-					
+
 				case 3:
 					display();
 					break;
-					
+
 				case 4:
 					changeValue();
 					break;
-					
+
 				case 5:
 					nodeHistory();
 					break;
-					
+
 				case 6:
 					listHistory();
 					break;
-					
+
 				case 7:
 					break;
-					
+
 				default:
 					System.out.println("Invalid command. Please try again.");
 					break;
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
+				System.out.println("Only allowed inputs are integers. Please try again.");
 			}
 		}
 
 	}
-	
+
 	public static void addNode() throws NumberFormatException, IOException {
-		System.out.print("Enter new node's value: ");
-		int value = Integer.parseInt(reader.readLine());
-		list.add(value);
-		list.getHistory().add(list.copyList());
-		System.out.println("Node was successfully added!");
-	}
-	
-	public static void deleteNode() throws NumberFormatException, IOException {
-		if(list.getHead() == null) {
-			System.out.println("Operation cannot be performed as the list is empty.");
-		}else {
-			System.out.print("Enter node position: ");
-			int position = Integer.parseInt(reader.readLine());
-			list.delete(position);
+		try {
+			System.out.print("Enter new node's value: ");
+			int value = Integer.parseInt(reader.readLine());
+			list.add(value);
 			list.getHistory().add(list.copyList());
-			System.out.println("Node was successfully deleted!");
+			System.out.println("Node was successfully added!");
+		} catch (NumberFormatException e) {
+			System.out.println("Only allowed inputs are integers. Please try again.");
+		}
+	}
+
+	public static void deleteNode() throws NumberFormatException, IOException {
+		try {
+			if(list.getHead() == null) {
+				System.out.println("Operation cannot be performed as the list is empty.");
+			}else {
+				System.out.print("Enter node position: ");
+				int position = Integer.parseInt(reader.readLine());
+				if(position > list.getSize() || position < list.getSize()){
+					System.out.println("Invalid position");
+				}else {
+					list.delete(position);
+					list.getHistory().add(list.copyList());
+					System.out.println("Node was successfully deleted!");
+				}
+			}
+
+		} catch (NumberFormatException e) {
+			System.out.println("Only allowed inputs are integers. Please try again.");
 		}
 	}
 	public static void display() {
@@ -85,33 +98,45 @@ public class Main {
 			System.out.println(list.display());
 		}
 	}
-	
+
 	public static void changeValue() throws NumberFormatException, IOException {
-		if(list.getHead() == null) {
-			System.out.println("Operation cannot be performed as the list is emtpy.");
-		}else {
-			System.out.print("Enter node position: ");
-			int position = Integer.parseInt(reader.readLine());
-			System.out.println("Current value of node "+position+ " is "+list.get(position)+"\n");
-			System.out.print("Enter new value for node "+position+" : ");
-			int value = Integer.parseInt(reader.readLine());
-			list.changeValue(position, value);
-			list.getHistory().add(list.copyList());
-			System.out.println("Node value hase been modified successfully!");
+		try {
+			if(list.getHead() == null) {
+				System.out.println("Operation cannot be performed as the list is emtpy.");
+			}else {
+				System.out.print("Enter node position: ");
+				int position = Integer.parseInt(reader.readLine());
+				if(position > list.getSize() || position < list.getSize()){
+					System.out.println("Invalid position");
+				}else {	
+					System.out.println("Current value of node "+position+ " is "+list.get(position)+"\n");
+					System.out.print("Enter new value for node "+position+" : ");
+					int value = Integer.parseInt(reader.readLine());
+					list.changeValue(position, value);
+					list.getHistory().add(list.copyList());
+					System.out.println("Node value hase been modified successfully!");
+				}
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Only allowed inputs are integers. Please try again.");
 		}
-		
+
 	}
-	
+
 	public static void nodeHistory() throws NumberFormatException, IOException {
-		if(list.getHead() == null) {
-			System.out.println("Operation cannot be performed as the list is emtpy.");
-		}else {
-			System.out.print("Enter node position: ");
-			int position = Integer.parseInt(reader.readLine());
-			System.out.println(list.displayNodeHistory(position));
+		try {
+			if(list.getHead() == null) {
+				System.out.println("Operation cannot be performed as the list is emtpy.");
+			}else {
+				System.out.print("Enter node position: ");
+				int position = Integer.parseInt(reader.readLine());
+				System.out.println(list.displayNodeHistory(position));
+			}
+		} catch (NumberFormatException e) {
+			System.out.println("Only allowed inputs are integers. Please try again.");
 		}
-		}
-	
+	}
+
 	public static void listHistory() {
 		System.out.println("Showing List History ...");
 		System.out.println(list.displayListHistory());
