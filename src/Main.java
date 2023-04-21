@@ -100,7 +100,7 @@ public class Main {
 			}else {
 				System.out.print("Enter node position: ");
 				int position = Integer.parseInt(reader.readLine());
-				if(position > list.getSize() || position < list.getSize()){
+				if(position > list.getSize() || position < 1){
 					System.out.println("Invalid position");
 				}else {
 					list.delete(position);
@@ -136,7 +136,7 @@ public class Main {
 			}else {
 				System.out.print("Enter node position: ");
 				int position = Integer.parseInt(reader.readLine());
-				if(position > list.getSize() || position < list.getSize()){
+				if(position > list.getSize() || position < 1){
 					System.out.println("Invalid position");
 				}else {	
 					System.out.println("Current value of node "+position+ " is "+list.get(position)+"\n");
